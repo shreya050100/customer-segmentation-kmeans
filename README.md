@@ -1,12 +1,13 @@
-# Customer Segmentation using K-Means Clustering
+# Customer Segmentation using K-Means Clustering & RFM Analysis
 
 ## Overview
-An end-to-end customer segmentation project using 
-K-Means clustering to group 2,240 customers into 
-4 distinct behavioral profiles for targeted 
-marketing strategy.
+An end-to-end customer segmentation project using RFM 
+(Recency, Frequency, Monetary) analysis and K-Means 
+clustering to group 2,240 customers into 4 distinct 
+behavioral profiles for targeted marketing strategy.
 
 ## Objective
+- Engineer RFM features to quantify customer behavior
 - Segment customers based on demographic and 
   behavioral attributes
 - Identify high-value customer groups
@@ -14,62 +15,70 @@ marketing strategy.
   per segment
 
 ## Customer Segments Identified
-- Premium Loyalists — high income, high spenders
-- Affluent Selectives — high income, selective buyers
-- Emerging Shoppers — mid income, growing potential
+- Premium Loyalists — highest income, highest spend
+- Affluent Selectives — high income, high purchase frequency
+- Emerging Shoppers — mid income, moderate engagement
 - Budget Conscious — lower income, price sensitive
 
 ## Methodology
-### 1. Data Preprocessing
+### 1. RFM Feature Engineering
+- Recency — derived from existing dataset feature
+- Frequency — calculated from total purchases across 
+  web, catalog, store, and deals channels
+- Monetary — calculated from total spend across all 
+  product categories
+
+### 2. Data Preprocessing
 - Removed datetime columns
+- Encoded categorical variables (Education, Marital Status)
+- Handled missing values using median imputation
 - Standardized features using StandardScaler
 
-### 2. Dimensionality Reduction
+### 3. Dimensionality Reduction
 - Applied PCA to reduce to 2 components 
   for visualization
 
-### 3. Optimal Cluster Selection
+### 4. Optimal Cluster Selection
 - Used Elbow Method (WCSS) to determine 
   optimal number of clusters
 - Selected 4 clusters based on elbow curve
 
-### 4. K-Means Clustering
+### 5. K-Means Clustering
 - Fitted K-Means with 4 clusters
-- Exported segmented customer data to CSV
+- Mapped clusters to business-relevant segment names 
+  based on income and spending patterns
 
-### 5. Cluster Profiling
-- Analyzed clusters by Income, Wine Spend, 
-  Fruit Spend, and Recency
-- Identified behavioral patterns per segment
+### 6. Cluster Profiling
+- Analyzed clusters by Income, Wine Spend, Fruit Spend, 
+  Recency, Frequency, and Monetary value
+- Validated segment logic against business expectations
+
+## Key Findings
+- Premium Loyalists represent the smallest but most 
+  valuable segment (175 customers)
+- Budget Conscious is the largest segment (1,018 customers), 
+  representing price-sensitive volume buyers
+- Clear income-spend correlation observed across segments, 
+  supporting differentiated marketing strategy
 
 ## Tools & Technologies
 - Python 3.x
 - Pandas — data manipulation
 - Scikit-learn — StandardScaler, KMeans, PCA
-- Matplotlib — cluster visualization
+- Matplotlib — data visualization
 - Openpyxl — Excel file reading
-- Tableau — interactive dashboard
 
 ## Project Structure
-├── Customer_Segmentation_KMeans.ipynb
+├── Customer_Segmentation_using_K_Means_and_RFM.ipynb
 
-├── Customer_Segmentation_Dashboard.twb
-
-├── segmented_customers.csv
+├── segmented_customers_output.csv
 
 ├── README.md
 
 └── requirements.txt
 ## Dataset
 Public dataset sourced from Kaggle:
-https://www.kaggle.com/code/suprithahalesh/
-marketing-campaign/notebook
-
-## Note
-The Tableau dashboard (.twb file) provides 
-interactive visualization of cluster distribution, 
-average income per segment, and campaign 
-acceptance rates per customer group.
+https://www.kaggle.com/code/suprithahalesh/marketing-campaign/notebook
 
 ## Author
 Shreya Verma
